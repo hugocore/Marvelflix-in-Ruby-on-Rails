@@ -41,11 +41,11 @@ gem 'devise'
 # Read ENV vars from a config file
 gem 'dotenv-rails'
 
-# HTTP Client
-gem 'faraday', '~> 0.9'
+# Marvel API wrapper
+gem 'marvelite'
 
-# ENV vars
-gem 'dotenv'
+# Clean Code Architecture
+gem 'usecasing'
 
 # Deployment
 # gem 'capistrano-rails', group: :development
