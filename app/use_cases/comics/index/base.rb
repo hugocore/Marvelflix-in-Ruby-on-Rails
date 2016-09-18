@@ -1,15 +1,11 @@
 module Comics
   module Index
     class Base < UseCase::Base
-      # depends ...
+      depends FetchComics
 
+      # Maps cached or new comics data into a collection of Comics
       def perform
-        api = Marvelite::API::Client.new(
-          public_key: ENV['MARVEL_API_PUBLIC_KEY'],
-          private_key: ENV['MARVEL_API_PRIVATE_KEY']
-        )
-
-        context.comics = api.comics(orderBy: 'onsaleDate')["data"]["results"]
+        context.comics = context.comics_data.map { |comic| OpenStruct.new(comic) }
       end
     end
   end
