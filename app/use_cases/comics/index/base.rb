@@ -5,7 +5,7 @@ module Comics
 
       # Maps cached or new comics data into a collection of Comics
       def perform
-        context.comics = context.comics_data.map { |comic| OpenStruct.new(comic) }
+        context.comics = context.comics_data.map { |comic| Comic.new(comic) }
       end
     end
   end

@@ -1,1 +1,4 @@
-<h3><%= comic.title %></h3>
+<h3><%= comic.name %></h3>
+<h4><%= comic.year %> - #<%= comic.issueNumber %></h4>
+
+<%= image_tag comic.thumb_path, width: '110' %>
