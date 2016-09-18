@@ -1,7 +1,7 @@
 module Comics
   module Index
     class FetchComics < UseCase::Base
-      DEFAULT_ORDER_BY = '-onsaleDate'
+      DEFAULT_ORDER_BY = '-onsaleDate'.freeze
       DEFAULT_PAGE_LIMIT = 20
 
       def perform
@@ -10,7 +10,7 @@ module Comics
           private_key: ENV['MARVEL_API_PRIVATE_KEY']
         )
 
-        # REQ1: "I want to see a list of all Marvel’s released comic books covers ordered from
+        # REQ1: "I want to see a list of all Marvel's released comic books covers ordered from
         # most recent to the oldest"
         comics_data = api.comics(
           orderBy: DEFAULT_ORDER_BY,
