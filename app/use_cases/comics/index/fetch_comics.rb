@@ -3,6 +3,7 @@ module Comics
     class FetchComics < UseCase::Base
       DEFAULT_ORDER_BY = '-onsaleDate'.freeze
       DEFAULT_PAGE_LIMIT = 20
+      DEFAULT_COMIC_FORMAT = 'comic'
 
       def perform
         api = Marvelite::API::Client.new(
@@ -13,6 +14,7 @@ module Comics
         # REQ1: "I want to see a list of all Marvel's released comic books covers ordered from
         # most recent to the oldest"
         comics_data = api.comics(
+          format: DEFAULT_COMIC_FORMAT,
           orderBy: DEFAULT_ORDER_BY,
           offset: context.offset || 0,
           limit: context.limit || DEFAULT_PAGE_LIMIT
