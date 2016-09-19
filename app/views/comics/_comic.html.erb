@@ -1,4 +1,6 @@
 <h3><%= comic.name %></h3>
 <h4><%= comic.year %> - #<%= comic.issueNumber %></h4>
+<h4>Upvoted? <%= comic.upvoted? %></h4>
 
 <%= image_tag comic.thumb_path, width: '110' %>
+
