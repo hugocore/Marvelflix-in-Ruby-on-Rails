@@ -6,6 +6,14 @@ class Comic < OpenStruct
   NAME_POS = 1
   YEAR_POS = 2
 
+  def upvoted?
+    upvote.present?
+  end
+
+  def total_upvotes
+    @_upvotes ||= Upvote.where(comic_id: id).count
+  end
+
   def to_partial_path
     'comic'.freeze
   end
