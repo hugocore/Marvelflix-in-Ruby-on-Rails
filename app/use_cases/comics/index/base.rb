@@ -16,6 +16,8 @@ module Comics
       # From the set of upvotes for the current user, check if any of those is related with the
       # comic that we are iterating in this class
       def map_comic_upvote(comic_id)
+        return unless context.upvotes
+
         context.upvotes.select { |upvote| upvote.comic_id == comic_id }
       end
     end
