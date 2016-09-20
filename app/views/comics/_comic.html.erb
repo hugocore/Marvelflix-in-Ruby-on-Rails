@@ -1,13 +1,14 @@
-<h3><%= comic.name %></h3>
-<h4><%= comic.year %> - #<%= comic.issueNumber %></h4>
-<h4>Upvoted? <%= comic.upvoted? %></h4>
-<h4>
-  <% if comic.upvoted? %>
-    <%= button_to 'Remove vote', delete_comic_upvotes_path(comic.id), method: :delete %>
-  <% else %>
-    <%= button_to 'Vote!', comic_upvotes_path(comic.id), method: :post %>
-  <% end %>
-</h4>
+<div style="width: 195px; height: 380px; float: left; display: block;">
+  <h3><%= comic.name %></h3>
+  <h4><%= comic.year %> - #<%= comic.issueNumber %></h4>
+  <h4>Upvoted? <%= comic.upvoted? %></h4>
+  <h4>
+    <% if comic.upvoted? %>
+      <%= button_to 'Remove vote', delete_comic_upvotes_path(comic.id), method: :delete %>
+    <% else %>
+      <%= button_to 'Upvote!', comic_upvotes_path(comic.id), method: :post %>
+    <% end %>
+  </h4>
 
-<%= image_tag comic.thumb_path, width: '110' %>
-
+  <%= image_tag comic.thumb_path, width: '110' %>
+</div>

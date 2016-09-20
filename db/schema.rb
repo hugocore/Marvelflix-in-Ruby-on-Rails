@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919211355) do
+ActiveRecord::Schema.define(version: 20160920115743) do
 
   create_table "upvotes", force: :cascade do |t|
     t.integer  "user_id",    null: false
-    t.integer  "comic_id",   null: false
+    t.string   "comic_id",   null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
