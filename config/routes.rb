@@ -2,6 +2,13 @@ Rails.application.routes.draw do
   devise_for :users
   root 'comics#index'
 
-  resource :comics, only: [:index]
+  resources :comics, only: [:index] do
+    resources :upvotes, only: [:create] do
+      collection do
+        delete 'delete' # we don't need the comic_id for deletion because its a single instance
+      end
+    end
+  end
+
   # resource :characters
 end

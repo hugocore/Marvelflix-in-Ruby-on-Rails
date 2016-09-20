@@ -6,6 +6,14 @@ class Comic < OpenStruct
   NAME_POS = 1
   YEAR_POS = 2
 
+  def upvoted?
+    upvote.present?
+  end
+
+  def total_upvotes
+    @_upvotes ||= Upvote.where(comic_id: id).count
+  end
+
   def to_partial_path
     'comic'.freeze
   end
@@ -15,7 +23,7 @@ class Comic < OpenStruct
   # > Comic.new(title: "Brilliant (2011) #7").name
   # => "Brilliant"
   def name
-    scrape_title(NAME_POS)
+    scrape_title(NAME_POS) || title
   end
 
   # Get the year
@@ -38,6 +46,8 @@ class Comic < OpenStruct
   def scrape_title(position)
     matches = title.match(TITLE_FORMAT)
 
-    matches.size > TITLE_NO_ELEMENTS ? matches[position] : title
+    return unless matches && matches.size > TITLE_NO_ELEMENTS
+
+    matches[position]
   end
 end
