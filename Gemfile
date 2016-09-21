@@ -47,6 +47,9 @@ gem 'marvelite'
 # Clean Code Architecture
 gem 'usecasing'
 
+# Async jobs
+gem 'sidekiq'
+
 # Deployment
 # gem 'capistrano-rails', group: :development
 # gem 'unicorn'
@@ -58,6 +61,7 @@ group :development, :test do
   # Debugging
   gem 'pry-rails', '~> 0.3.4'
   gem 'pry-byebug', '~> 3.3'
+  gem 'fakeredis', require: 'fakeredis/rspec'
 
   # Code syntax
   gem 'rubocop'
@@ -72,6 +76,10 @@ group :development, :test do
 
   # Models mocks
   gem 'factory_girl'
+  gem 'factory_girl_rails'
+
+  # Web mocks
+  gem 'vcr'
 end
 
 group :development do
