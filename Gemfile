@@ -59,6 +59,7 @@ gem 'sidekiq'
 
 group :development, :test do
   # Debugging
+  gem 'pry'
   gem 'pry-rails', '~> 0.3.4'
   gem 'pry-byebug', '~> 3.3'
   gem 'fakeredis', require: 'fakeredis/rspec'
