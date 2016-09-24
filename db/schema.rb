@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160924171631) do
+ActiveRecord::Schema.define(version: 20160924183422) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_characters_on_name"
   end
 
   create_table "upvotes", force: :cascade do |t|
