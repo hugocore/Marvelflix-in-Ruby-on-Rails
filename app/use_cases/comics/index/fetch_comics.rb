@@ -19,7 +19,7 @@ module Comics
       end
 
       def cache_key
-        format(DEFAULT_CACHE_KEY, Digest::SHA1.hexdigest("#{Date.today}#{context_params}"))
+        format(DEFAULT_CACHE_KEY, Digest::SHA1.hexdigest("#{Date.today}#{context_params.to_json}"))
       end
 
       def fetch_comics_from_marvel
@@ -49,7 +49,7 @@ module Comics
 
         # REQ3: "I want to be able to search by character (ex. deadpool) so that I can find my
         # favorite comics"
-        @_context.merge!(characters: context.character) if context.character.present?
+        @_context.merge!(characters: context.characters) if context.characters.present?
 
         @_context
       end

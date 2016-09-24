@@ -4,7 +4,7 @@ class ComicsController < ApplicationController
       offset: params[:offset],
       limit: params[:limit],
       current_user: current_user,
-      character: params[:character]
+      characters: params[:characters]
     )
 
     @comics = context.comics
