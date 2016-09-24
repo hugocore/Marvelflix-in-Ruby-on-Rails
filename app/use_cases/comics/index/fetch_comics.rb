@@ -33,7 +33,7 @@ module Comics
         comics_data = api.comics(context_params)
 
         # Ruby's 2.3 dig method will return the value of the parameter ["data"]["results"] and it
-        # will return nil if data or results are not present
+        # will return nil if "data" or "results" are not present
         comics_data.dig(:data, :results)
       end
 
@@ -43,9 +43,15 @@ module Comics
             format: DEFAULT_COMIC_FORMAT,
             orderBy: DEFAULT_ORDER_BY,
             offset: context.offset || 0,
-            limit: context.limit || DEFAULT_PAGE_LIMIT
+            limit: context.limit || DEFAULT_PAGE_LIMIT,
           }
         end
+
+        # REQ3: "I want to be able to search by character (ex. deadpool) so that I can find my
+        # favorite comics"
+        @_context.merge!(characters: context.character) if context.character.present?
+
+        @_context
       end
     end
   end

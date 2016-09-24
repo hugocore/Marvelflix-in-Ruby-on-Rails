@@ -6,7 +6,7 @@ module Comics
 
       # Maps cached or new comics data into a collection of Comics
       def perform
-        context.comics = context.comics_data.map do |comic|
+        context.comics = context.comics_data&.map do |comic|
           Comic.new(comic.merge(upvote: map_comic_upvote(comic['id'])))
         end
       end
