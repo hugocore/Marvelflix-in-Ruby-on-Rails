@@ -11,7 +11,11 @@ require 'ffaker'
 
 # Code coverage
 require 'simplecov'
-SimpleCov.start 'rails'
+SimpleCov.start 'rails' do
+  add_filter '/spec/'
+  add_filter '/jobs/'
+  add_filter '/helpers/'
+end
 
 # Webmocks
 require 'webmock/rspec'

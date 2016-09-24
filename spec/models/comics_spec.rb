@@ -66,4 +66,10 @@ describe Comic do
       expect(comic_with_image.thumb_path).to eq('logo.jpg')
     end
   end
+
+  describe '#to_partial_path' do
+    it 'returns name for its partial view' do
+      expect(comic.to_partial_path).to eq('comic')
+    end
+  end
 end
