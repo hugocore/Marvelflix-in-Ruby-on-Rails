@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     end
   end
 
-  # resource :characters
+  resources :characters, only: [:index]
 end
