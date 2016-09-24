@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+describe User do
   describe '.create' do
     context 'with a valid user' do
       it 'creates a user' do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'ffaker'
 
-describe Comic.new do
+describe Comic do
   let(:user) { create(:user) }
   let(:comic) { create(:comic) }
   let(:comic_with_year) { create(:comic, title: 'Brilliant (2011) #7') }
@@ -22,9 +22,12 @@ describe Comic.new do
     it 'returns the total number of upvotes of a certain comic' do
       total_upvotes = 3
 
-      total_upvotes.times do
-        create(:upvote, user: user, comic_id: comic.id)
-      end
+      user2 = create(:user)
+      user3 = create(:user)
+
+      create(:upvote, user: user, comic_id: comic.id)
+      create(:upvote, user: user2, comic_id: comic.id)
+      create(:upvote, user: user3, comic_id: comic.id)
 
       expect(comic.total_upvotes).to eq(total_upvotes)
     end
