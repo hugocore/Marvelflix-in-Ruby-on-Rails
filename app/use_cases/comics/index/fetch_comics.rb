@@ -19,7 +19,7 @@ module Comics
       end
 
       def cache_key
-        format(DEFAULT_CACHE_KEY, Digest::SHA1.hexdigest("#{Date.today}#{context_params}"))
+        format(DEFAULT_CACHE_KEY, Digest::SHA1.hexdigest("#{Date.today}#{context_params.to_json}"))
       end
 
       def fetch_comics_from_marvel
@@ -33,7 +33,7 @@ module Comics
         comics_data = api.comics(context_params)
 
         # Ruby's 2.3 dig method will return the value of the parameter ["data"]["results"] and it
-        # will return nil if data or results are not present
+        # will return nil if "data" or "results" are not present
         comics_data.dig(:data, :results)
       end
 
@@ -43,9 +43,15 @@ module Comics
             format: DEFAULT_COMIC_FORMAT,
             orderBy: DEFAULT_ORDER_BY,
             offset: context.offset || 0,
-            limit: context.limit || DEFAULT_PAGE_LIMIT
+            limit: context.limit || DEFAULT_PAGE_LIMIT,
           }
         end
+
+        # REQ3: "I want to be able to search by character (ex. deadpool) so that I can find my
+        # favorite comics"
+        @_context.merge!(characters: context.characters) if context.characters.present?
+
+        @_context
       end
     end
   end

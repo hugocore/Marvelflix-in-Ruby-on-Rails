@@ -1,0 +1,7 @@
+<h2>Found <%= @characters.count %> characters</h2>
+
+<% @characters.each do |character| %>
+  <h4><%= character.name %></h4>
+  <h5><%= character.id %></h5>
+  <hr />
+<% end %>

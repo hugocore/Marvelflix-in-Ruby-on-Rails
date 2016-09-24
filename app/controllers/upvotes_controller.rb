@@ -2,18 +2,18 @@ class UpvotesController < AuthenticatedController
   def create
     @context = Upvotes::Create::Base.perform(current_user: current_user, comic_id: params[:comic_id])
 
-    respond
+    redirect_to_root
   end
 
   def delete
     @context = Upvotes::Delete::Base.perform(current_user: current_user, comic_id: params[:comic_id])
 
-    respond
+    redirect_to_root
   end
 
   private
 
-  def respond
+  def redirect_to_root
     if @context.success?
       redirect_to root_path
     else

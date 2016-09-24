@@ -6,8 +6,10 @@ module Comics
 
       # Maps cached or new comics data into a collection of Comics
       def perform
-        context.comics = context.comics_data.map do |comic|
-          Comic.new(comic.merge(upvote: map_comic_upvote(comic['id'])))
+        context.comics = context.comics_data&.map do |comic|
+          comic['upvote']= map_comic_upvote(comic['id'])
+
+          Comic.new(comic)
         end
       end
 
@@ -18,7 +20,7 @@ module Comics
       def map_comic_upvote(comic_id)
         return unless context.upvotes
 
-        context.upvotes.select { |upvote| upvote.comic_id == comic_id }
+        context.upvotes.select { |upvote| upvote.comic_id == comic_id.to_s }
       end
     end
   end
