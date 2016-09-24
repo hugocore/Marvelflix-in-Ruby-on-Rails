@@ -18,7 +18,7 @@ module Comics
       def map_comic_upvote(comic_id)
         return unless context.upvotes
 
-        context.upvotes.select { |upvote| upvote.comic_id == comic_id }
+        context.upvotes.select { |upvote| upvote.comic_id == comic_id.to_s }
       end
     end
   end
