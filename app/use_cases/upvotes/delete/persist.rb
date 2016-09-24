@@ -5,7 +5,11 @@ module Upvotes
         context.upvote = Upvote.find_by(
           comic_id: context.comic_id,
           user: context.current_user
-        ).destroy
+        )
+
+        context.upvote&.destroy!
+      rescue
+        context.errors = context.upvote.errors
       end
     end
   end

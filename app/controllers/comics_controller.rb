@@ -3,7 +3,8 @@ class ComicsController < ApplicationController
     context = Comics::Index::Base.perform(
       offset: params[:offset],
       limit: params[:limit],
-      current_user: current_user
+      current_user: current_user,
+      characters: params[:characters]
     )
 
     @comics = context.comics

@@ -262,6 +262,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.0.5)
   marvelite
+  pry
   pry-byebug (~> 3.3)
   pry-rails (~> 0.3.4)
   puma (~> 3.0)
