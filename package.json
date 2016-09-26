@@ -1,27 +1,16 @@
 {
   "name": "marvel",
-  "version": "1.0.0",
-  "description": "[Role description](https://github.com/Streetbees/full-stack-engineer-ruby/wiki/Role-description)",
-  "main": "index.js",
-  "dependencies": {
-    "react": "^15.3.2",
-    "react-redux": "^4.4.5",
-    "redux": "^3.6.0",
-    "redux-infinite-scroll": "^1.0.9"
+  "version": "0.0.1",
+  "engines": {
+    "node": "5.10.0",
+    "npm": "3.5.0"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hugoseq/Full-Stack-Engineer-Ruby.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hugoseq/Full-Stack-Engineer-Ruby/issues"
-  },
-  "homepage": "https://github.com/hugoseq/Full-Stack-Engineer-Ruby#readme"
+    "postinstall": "cd client && npm install",
+    "rails-server": "echo 'visit http://localhost:3000/hello_world' && foreman start -f Procfile.dev",
+    "build:production:client": "(cd client && npm run build:production:client --silent)",
+    "build:client": "(cd client && npm run build:client --silent",
+    "build:dev:client": "(cd client && npm run build:dev:client --silent)",
+    "test": "rspec"
+  }
 }
